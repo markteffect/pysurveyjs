@@ -1,11 +1,11 @@
 from variables import Variable
 from collections.abc import Iterable
-
+from parsers import Parser
 
 class SurveyJSParser:
     locale = 'en'
 
-    parsers: dict[str, object] = {}
+    parsers: dict[str, Parser] = {}
 
     def __init__(self, locale: str = 'en') -> None:
         self.locale = locale
