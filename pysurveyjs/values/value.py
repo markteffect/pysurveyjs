@@ -6,6 +6,6 @@ class Value:
 
     def get_raw_value(self) -> any:
         return self.raw_value
-    
+
     def get_display_value(self) -> str:
-      return str(self.raw_value)
+        return str(self.raw_value)
