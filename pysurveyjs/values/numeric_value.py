@@ -1,4 +1,4 @@
-from value import Value
+from pysurveyjs.values.value import Value
 
 class NumericValue(Value):
   

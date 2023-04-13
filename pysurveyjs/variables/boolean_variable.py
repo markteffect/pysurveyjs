@@ -1,5 +1,5 @@
-from variable import Variable
-from values import BooleanValue, MissingValue
+from pysurveyjs.variables.variable import Variable
+from pysurveyjs.values import BooleanValue, MissingValue
 
 class BooleanVariable(Variable):
     def get_value(self, record: dict) -> BooleanValue | MissingValue:

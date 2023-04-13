@@ -1,4 +1,4 @@
-from values import Value
+from pysurveyjs.values.value import Value
 
 class MissingValue(Value):
   

@@ -1,6 +1,6 @@
-from variables import Variable
+from pysurveyjs.variables import Variable
 from collections.abc import Iterable
-from parsers import Parser
+from pysurveyjs.parsers.base_parser import Parser
 
 class SurveyJSParser:
     locale = 'en'
