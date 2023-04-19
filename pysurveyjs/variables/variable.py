@@ -19,7 +19,7 @@ class Variable:
     def get_name(self) -> str:
         return self.name
 
-    def get_value(self, record: dict) -> str | float | bool | list | None:
+    def get_value(self, record: dict) -> Value | MissingValue:
         data = record
         # Traverse the entire data path in the data
         for element in self.data_path:

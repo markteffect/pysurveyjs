@@ -3,6 +3,8 @@ from collections.abc import Iterable
 from pysurveyjs.parsers.base_parser import Parser
 from pysurveyjs.parsers.open_text_parser import OpenTextParser
 from pysurveyjs.parsers.dummy_parser import DummyParser
+
+
 class SurveyJSParser:
     locale = "en"
 
@@ -10,11 +12,10 @@ class SurveyJSParser:
 
     def __init__(self, locale: str = "en") -> None:
         self.locale = locale
-        
+
         text_parser = OpenTextParser()
-        self.parsers['text'] = text_parser
-        self.parsers['comment'] = text_parser
-           
+        self.parsers["text"] = text_parser
+        self.parsers["comment"] = text_parser
 
     def parse_survey(self, survey: dict) -> Iterable[Variable]:
         pages = survey.get("pages")
@@ -26,7 +27,7 @@ class SurveyJSParser:
             yield from self.parse_page(page)
 
     def parse_page(self, page: dict) -> Iterable[Variable]:
-        page_elements = page.get('elements', [])
+        page_elements = page.get("elements", [])
         for item in page_elements:
             yield from self.parse_element(item)
 
