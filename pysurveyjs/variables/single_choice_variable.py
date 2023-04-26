@@ -5,7 +5,7 @@ from pysurveyjs.values.invalid_value import InvalidValue
 
 class SingleChoiceVariable(Variable):
   
-  valuemap: dict[str, ValueOption] = []
+  valuemap: dict[str, ValueOption] = {}
   
   def __init__(self, name: str, titles: dict[str, str], data_path: list[str], value_options: list[ValueOption]) -> None:
     super().__init__(name, titles, data_path)
@@ -20,3 +20,8 @@ class SingleChoiceVariable(Variable):
       return self.valuemap[raw_value]
     
     return InvalidValue()
+  
+  def get_value_options(self) -> list[ValueOption]:
+    return self.valuemap.values()
+  
+  
