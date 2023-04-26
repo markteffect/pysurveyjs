@@ -1,3 +1,5 @@
+from pysurveyjs.parsers.multiple_choice_parser import MultipleChoiceParser
+from pysurveyjs.parsers.single_choice_parser import SingleChoiceParser
 from pysurveyjs.variables import Variable
 from collections.abc import Iterable
 from pysurveyjs.parsers.base_parser import Parser
@@ -16,6 +18,14 @@ class SurveyJSParser:
         text_parser = OpenTextParser()
         self.parsers["text"] = text_parser
         self.parsers["comment"] = text_parser
+        
+        single_choice_parser = SingleChoiceParser()
+        self.parsers["radiogroup"] = single_choice_parser
+        self.parsers["dropdown"] = single_choice_parser
+        
+        multiple_choice_parser = MultipleChoiceParser()
+        self.parsers["checkbox"] = multiple_choice_parser
+        
 
     def parse_survey(self, survey: dict) -> Iterable[Variable]:
         pages = survey.get("pages")
