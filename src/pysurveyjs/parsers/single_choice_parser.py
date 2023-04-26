@@ -1,6 +1,6 @@
 from typing import Iterable
 from pysurveyjs.parsers.base_parser import Parser
-from parser_helpers import *
+from pysurveyjs.parser_helpers import *
 from pysurveyjs.variables.variable import Variable
 from pysurveyjs.variables.single_choice_variable import SingleChoiceVariable
 

@@ -1,11 +1,10 @@
 from typing import Iterable
 from pysurveyjs.parsers.base_parser import Parser
-from parser_helpers import *
-from pysurveyjs.variables.variable import Variable
-from pysurveyjs.variables.multiple_choice_variable import MultipleChoiceVariable
+from pysurveyjs.parser_helpers import *
+from pysurveyjs.variables import *
 
 
-class MultipleChoiceParser(Parser):
+class OpenTextParser(Parser):
     def parse(
         self, root_parser: Parser, question: dict, data_prefix: list = []
     ) -> Iterable[Variable]:
@@ -13,6 +12,8 @@ class MultipleChoiceParser(Parser):
 
         name = extract_name(question)
         titles = extract_localized_text(question, "title", {"default": name})
-        choices = extract_choices(question.get("choices", []))
-        
-        return MultipleChoiceVariable(name, titles, datapath, choices)
+
+        if question.get("inputType") == "number":
+            yield NumericVariable(name, titles, datapath)
+        else:
+            yield StringVariable(name, titles, datapath)
