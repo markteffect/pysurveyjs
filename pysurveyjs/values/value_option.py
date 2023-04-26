@@ -1,4 +1,5 @@
-class ValueOption:
+from pysurveyjs.values.value import Value
+class ValueOption(Value):
     DEFAULT_LOCALE = "default"
 
     raw_value: str | int | float | bool | list | None

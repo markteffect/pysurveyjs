@@ -1,10 +1,11 @@
 from typing import Iterable
 from pysurveyjs.parsers.base_parser import Parser
 from parser_helpers import *
-from pysurveyjs.variables import *
+from pysurveyjs.variables.variable import Variable
+from pysurveyjs.variables.single_choice_variable import SingleChoiceVariable
 
 
-class MultipleChoiceParser(Parser):
+class SingleChoiceParser(Parser):
     def parse(
         self, root_parser: Parser, question: dict, data_prefix: list = []
     ) -> Iterable[Variable]:
@@ -13,3 +14,5 @@ class MultipleChoiceParser(Parser):
         name = extract_name(question)
         titles = extract_localized_text(question, "title", {"default": name})
         choices = extract_choices(question.get("choices", []))
+        
+        return SingleChoiceVariable(name, titles, datapath, choices)
