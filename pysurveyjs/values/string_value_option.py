@@ -1,4 +1,4 @@
-from value_option import ValueOption
+from pysurveyjs.values.value_option import ValueOption
 
 
 class StringValueOption(ValueOption):
