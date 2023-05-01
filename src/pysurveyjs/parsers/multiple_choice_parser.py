@@ -15,4 +15,4 @@ class MultipleChoiceParser(Parser):
         titles = extract_localized_text(question, "title", {"default": name})
         choices = extract_choices(question.get("choices", []))
         
-        return MultipleChoiceVariable(name, titles, datapath, choices)
+        yield MultipleChoiceVariable(name, titles, datapath, choices)
