@@ -5,6 +5,12 @@ from pysurveyjs.values import BooleanValue, MissingValue
 class BooleanVariable(Variable):
     def get_value(self, record: dict) -> BooleanValue | MissingValue:
         value = super().get_value(record)
+        
+        if value == "true":
+            value = True
+        
+        if value == "false":
+            value = False
 
         if not isinstance(value, bool):
             return ValueError(f"{self.name}: Value is not Boolean({value})")

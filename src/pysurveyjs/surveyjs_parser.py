@@ -1,5 +1,6 @@
 from pysurveyjs.parsers.multiple_choice_parser import MultipleChoiceParser
 from pysurveyjs.parsers.single_choice_parser import SingleChoiceParser
+from pysurveyjs.parsers.boolean_parser import BooleanParser
 from pysurveyjs.variables import Variable
 from collections.abc import Iterable
 from pysurveyjs.parsers.base_parser import Parser
@@ -25,6 +26,9 @@ class SurveyJSParser:
         
         multiple_choice_parser = MultipleChoiceParser()
         self.parsers["checkbox"] = multiple_choice_parser
+        
+        boolean_parser = BooleanParser()
+        self.parsers["boolean"] = boolean_parser
         
 
     def parse_survey(self, survey: dict) -> Iterable[Variable]:
