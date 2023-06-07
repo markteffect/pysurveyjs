@@ -6,6 +6,8 @@ from collections.abc import Iterable
 from pysurveyjs.parsers.base_parser import Parser
 from pysurveyjs.parsers.open_text_parser import OpenTextParser
 from pysurveyjs.parsers.dummy_parser import DummyParser
+from pysurveyjs.parsers.image_parser import ImageParser
+from pysurveyjs.parsers.text_parser import TextParser
 
 
 class SurveyJSParser:
@@ -16,9 +18,9 @@ class SurveyJSParser:
     def __init__(self, locale: str = "en") -> None:
         self.locale = locale
 
-        text_parser = OpenTextParser()
-        self.parsers["text"] = text_parser
-        self.parsers["comment"] = text_parser
+        open_text_parser = OpenTextParser()
+        self.parsers["text"] = open_text_parser
+        self.parsers["comment"] = open_text_parser
         
         single_choice_parser = SingleChoiceParser()
         self.parsers["radiogroup"] = single_choice_parser
@@ -29,6 +31,12 @@ class SurveyJSParser:
         
         boolean_parser = BooleanParser()
         self.parsers["boolean"] = boolean_parser
+        
+        text_parser = TextParser()
+        self.parsers["html"] = text_parser
+        
+        image_parser = ImageParser()
+        self.parsers["image"] = image_parser
         
 
     def parse_survey(self, survey: dict) -> Iterable[Variable]:
